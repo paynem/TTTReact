@@ -60,7 +60,7 @@ function handleClick() {
         highlightWinner();
     }
 }
-
+// testing
 function calculateWinner() {
     for (var i = 0; i < lines.length; i++) {
         var a = lines[i][0];
