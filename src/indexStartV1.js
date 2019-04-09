@@ -19,6 +19,10 @@ function init()
     // Add an onclick handler to all of the squares
     // The name attribute for all of the divs is square
     // Use the function handleClick to handle the event 
+    for (var i = 0; i < 9; i++) 
+    {
+       document.getElementById(i).onclick = handleClick;
+    }
 }
 
 function handleClick() {
@@ -34,6 +38,27 @@ function handleClick() {
     // If calculateWinner returns true
     // highlight the winner and disable all of the squares
     // otherwise update the status in the UI to display the player
+    
+    if (xIsNext) 
+    {
+        document.getElementById(this.id).innerHTML = "X";
+        document.getElementById("status").innerHTML = "Next Player: O";
+        xIsNext = false;
+        squares[this.id] = "X";
+        document.getElementById(this.id).style.pointerEvents = "none";
+    }
+    else 
+    {
+        document.getElementById(this.id).innerHTML = "O";
+        document.getElementById("status").innerHTML = "Next Player: X";
+        xIsNext = true;
+        squares[this.id] = "O"
+        document.getElementById(this.id).style.pointerEvents = "none";
+    }
+    if (calculateWinner())
+    {
+        highlightWinner();
+    }
 }
 
 function calculateWinner() {
@@ -41,9 +66,8 @@ function calculateWinner() {
         var a = lines[i][0];
         var b = lines[i][1];
         var c = lines[i][2];       
-        if (squares[a] && 
-        squares[a] === squares[b] && 
-        squares[a] === squares[c]) {
+        if (squares[a] && squares[a] == squares[b] && 
+        squares[a] == squares[c]) {
             winner = squares[a];
             winningLine = lines[i];
             return true;
@@ -56,18 +80,37 @@ function calculateWinner() {
 
 //
 function highlightWinner() {
-
+    
     // Update the status in the UI to display the winner
     // Iterate through the winningLine array.  It contains the indices of the winning squares
     //      get the next square using the current index in the winningLine array as the id
     //      add the class red to the square
     // Disable all of the squares
+    if (winner == "X")
+    {
+        document.getElementById("status").innerHTML = "X wins!";
+    }
+    else if (winner == "O")
+    {
+        document.getElementById("status").innerHTML = "O wins!";
+    }
+    for (var i = 0; i < 3; i++)
+    {
+        var id = winningLine[i];
+        document.getElementById(id).style.color = "red";
+    }
+    disableAll();
 }
 
 function disableAll() {
 
     // Set the onclick handler for all squares to function that does nothing
     // The id of the square is a number 0 - 8
+    for (var i = 0; i < 9; i++) 
+        {
+            document.getElementById(i).style.pointerEvents = "none";
+        }
 }
 
 // When the page has finished loading, call the function init    
+window.onload = init;
