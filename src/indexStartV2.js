@@ -73,7 +73,7 @@ class TTT {
         this.squares[i] = "X";
         document.getElementById(i).style.pointerEvents = "none";
     }
-    else 
+    else s
     {
         document.getElementById(i).innerHTML = "O";
         document.getElementById("status").innerHTML = "Next Player: X";
