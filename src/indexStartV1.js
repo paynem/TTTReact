@@ -14,18 +14,16 @@ var lines = [
     [2, 4, 6],
     ];
 
-function init()
+init()
 {
-    // Add an onclick handler to all of the squares
-    // The name attribute for all of the divs is square
-    // Use the function handleClick to handle the event 
+    
     for (var i = 0; i < 9; i++) 
     {
-       document.getElementById(i).onclick = handleClick;
+       document.getElementById(i).onclick = this.handleClick.bind(this);
     }
 }
 
-function handleClick() {
+handleClick() {
 
     // Get the id from the square and put it in a variable
     // Remember that the id is an integer 0 - 8
@@ -61,7 +59,7 @@ function handleClick() {
     }
 }
 // testing
-function calculateWinner() {
+calculateWinner() {
     for (var i = 0; i < lines.length; i++) {
         var a = lines[i][0];
         var b = lines[i][1];
@@ -79,7 +77,7 @@ function calculateWinner() {
 }
 
 //
-function highlightWinner() {
+highlightWinner() {
     
     // Update the status in the UI to display the winner
     // Iterate through the winningLine array.  It contains the indices of the winning squares
@@ -102,7 +100,7 @@ function highlightWinner() {
     disableAll();
 }
 
-function disableAll() {
+disableAll() {
 
     // Set the onclick handler for all squares to function that does nothing
     // The id of the square is a number 0 - 8
