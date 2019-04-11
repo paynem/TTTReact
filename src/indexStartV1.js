@@ -58,6 +58,7 @@ function handleClick() {
     if (calculateWinner())
     {
         highlightWinner();
+        //blahblah
     }
 }
 // testing
