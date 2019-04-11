@@ -56,6 +56,7 @@ class TTT {
         -   add a local variable to refer to the clicked square
             -   remember that squares have an integer id 0 - 8
     */
+   // blah blah
    init() {
     for (let i = 0; i < 9; i++) 
     {
