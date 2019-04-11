@@ -27,9 +27,9 @@ class TTT {
         [2, 4, 6],
         ];
         this.init();
-        this.calculateWinner.bind(this);
-        this.highlightWinner.bind(this);
-        this.disableAll.bind(this);
+        this.calculateWinner = this.calculateWinner.bind(this);
+        this.highlightWinner = this.highlightWinner.bind(this);
+        this.disableAll = this.disableAll.bind(this);
         
 
    }
@@ -74,7 +74,7 @@ class TTT {
         this.squares[i] = "X";
         document.getElementById(i).style.pointerEvents = "none";
     }
-    else s
+    else
     {
         document.getElementById(i).innerHTML = "O";
         document.getElementById("status").innerHTML = "Next Player: X";
